@@ -1,0 +1,57 @@
+MongoDB
+masuk ke MONGO:
+command di terminal : mongo
+
+create db :
+db.arkademy()
+db diikuti nama database yang ingin di buat
+
+insert into db:
+data di MongoDb(NoSQL) berbentuk JSON
+contoh memasukan data ke db arkademy :
+db.arkademy.insertOne({nama:"Oka",alamat:"Bali"});
+
+untuk masuk ke db / berpindah db :
+contoh : kita ingin masuk ke db arkademy
+use arkademy
+
+untuk melihat semua data :
+dapat menggunakan find();
+contoh:
+melihat semua data pada db arkademy
+db.arakademy.find();
+
+mencari spesifik file:
+db.arkademy.find({"nama":{$eq:"Oka"}});
+penjelasan singkat : pada db arkademy kita ingin melihat file dengan nama "Oka", $eq berfungsimencari value yang sama dengan apa yg kita inginkan ( variable yang berisi filter nama "Oka")
+
+ATAU 
+
+db.arkademy.find({"nama":"Oka"});
+
+
+menambah collection (table) pada db:
+setelah masuk ke db (use "nama DB")
+db."nama_collection";
+contoh:
+db.siswa()
+
+untuk mencari data, menambahkan data sama dengan cara sebelumnya
+
+untuk menambahkan data kita dapat menambahkan satu data (insertOne) atau menambahkan banyak data (insertMany) data yang di masukan pada saat insertMany berupa array JSON.
+
+contoh insert many:
+db.siswa.insertMany([{nama:"Robert",alamat:"Bandung"},{nama:Tantular,alamat:"Jakarta"},{nama:"turahmarcel",alamat:"Jakarta"}]);
+
+mambaca 1 document spesifik pada banyak document:
+contoh mencari satu document dengan ObjectId :
+db.siswa.findOne({_id:ObjectId("blabla")}); 
+
+update document pada mongoDB:
+REKOMENDASI UNTUK MENCARI DATA ADALAH OBJECTID
+db.siswa.updateOne({"_id":ObjectId("blabla")},{$set:{"nama":"KumisKucingBoss","alamat":"Bali"}});
+command diatas akan mengganti nama dan alamat, jika hanya ingin mengganti nama, maka :
+db.siswa.updateOne({"_id":ObjectId("blabla")},{$set:{"nama":"KumisKucingLagi"}});
+
+untuk delete dari collection : 
+db.siswa.deleteOne({"_id":ObjectId("blabla")});
